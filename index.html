@@ -1,0 +1,93 @@
+<html>
+
+<head>
+  <link href="style.css" rel="stylesheet">
+  <title> Aparelhos eletrônicos</title>
+  <meta charset="UTF-8">
+</head>
+
+<body>
+  <header>
+    <div class="logo_caixa">
+      <img src="image.png" title="Aparelhos eletrônicos" class="logo">
+    </div>
+  </header>
+
+  <h1 class="titulo">Encomenda</h1>
+  <hr>
+  
+    <table class="tabela">
+      <tr>
+        <th>Nome</th>
+        <th>Produto</th>
+        <th>Quantidade</th>
+        <th>Valor Unitário</th>
+        <th>Total</th>
+      </tr>
+      <tr class="cliente">
+        <td class="nome">Victor</td>
+        <td class="produto">Smartphone Samsung Galaxy A30</td>
+        <td class="qntd"></td>
+        <td class="valor">3499</td>
+        <td class="total"></td>
+      </tr>
+      <tr class="cliente">
+        <td class="nome">Maria</td>
+        <td class="produto">Fone de ouvido AirPods Apple</td>
+        <td class="qntd">6</td>
+        <td class="valor">13a99</td>
+        <td class="total"></td>
+      </tr>
+      <tr class="cliente">
+        <td class="nome">Patricia</td>
+        <td class="produto">iPhone 15</td>
+        <td class="qntd">5</td>
+        <td class="valor"> 7299</td>
+        <td class="total"></td>
+      </tr>
+      <tr class="cliente">
+        <td class="nome">Vitoria</td>
+        <td class="produto">iPhone 15</td>
+        <td class="qntd">3</td>
+        <td class="valor"> 7299</td>
+        <td class="total"> </td>
+      </tr>
+    </table>
+     
+  <h1  class="titulo">Novas Encomendas</h1>
+  <hr>
+  <br>
+  <div class="quadrado">
+  <form>
+    <div class="dados">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nme"  required  placeholder="Digite o nome do(a) cliente" class="texto-grande"><br><br>
+    
+    <label for="produto">Escolha o produto:</label>
+    <select id="prduto" name="produto" required class="texto-grande">
+        <option value="" selected>Selecione</option>
+        <option value="TV"  >TV</option>
+        <option value="Fone de ouvido AirPods Apple"  >Fone de ouvido AirPods Apple</option>
+        <option value="Smartphone Samsung Galaxy A30 "  >Smartphone Samsung Galaxy A30 </option>
+        <option value="Caixa de Som-JBL"  >Caixa de Som-JBL </option>
+        <option value="Notebook Dell"  >Notebook Dell</option>
+        <option value="iPhone 15 Pro Max"  >iPhone 15 Pro Max</option>
+    </select><br><br>
+
+    <label for="qntd">Quantidade:</label>
+    <input type="number" id="qtd" name="quantidade" required placeholder="Digite a quantidade desejada" class="texto-grande"><br><br>
+  
+    <label for="valor">Valor Unitário:</label>
+    <input type="text" id="vlor" name="valor" required placeholder="Digite o valor do produto" class="texto-grande"><br><br>
+  
+    <input type="button" class="botao" value="Adicionar" onclick="Inserir()" >
+    
+  </div>
+  </form>
+  </div>
+
+  <br>
+    <script src="calcula_total.js"></script>
+    <script src="remove_encomenda.js"></script>
+</body>
+</html>
