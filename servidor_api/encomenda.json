@@ -1,0 +1,39 @@
+{
+    "encomenda_web":[
+        {
+            "nome": "Bruce Wayne",
+            "produto": "Playstation 5 Pro",
+            "qtd": 2,
+            "unitario": 4599,
+            "total": 0
+        },
+        {
+            "nome": "Robin Wood",
+            "produto": "Controle PS%",
+            "qtd": 4,
+            "unitario": 599,
+            "total": 0
+        },
+        {
+            "nome": "Harry Potter",
+            "produto": "Óculos realidade Virtual",
+            "qtd": 3,
+            "unitario": 2199,
+            "total": 0
+        },
+        {
+            "nome": "Hermione",
+            "produto": "dsgsad",
+            "qtd": 2,
+            "unitario": 4599,
+            "total": 0
+        },
+        {
+            "nome": "Coringa",
+            "produto": "fssgsd",
+            "qtd": 10,
+            "unitario": 4599,
+            "total": 0
+        }
+    ]
+}
