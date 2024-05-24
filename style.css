@@ -83,10 +83,23 @@ table {
     background-color: rgb(2, 69, 131);
     color: white;
     font-weight: bold;
+    margin: 0 auto;
+    display: block;
   }
   .fadeOut{
   opacity: 0;
   transition: 40s;
+  }
+  #filtrar-tabela{
+    width: 19.5%;
+    height: 90px;
+    margin-bottom: 40px;
+  }
+  .invisivel{
+    display: none;
+  }
+  .filtro_css{
+    padding: 20px;
   }
  
   
