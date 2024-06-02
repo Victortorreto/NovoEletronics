@@ -75,6 +75,7 @@ table {
     font-size: 15;
     margin-left: 40%;
     text-align: center;
+    margin: auto;
   }
   .botao{
     width: 200;
@@ -83,7 +84,7 @@ table {
     background-color: rgb(2, 69, 131);
     color: white;
     font-weight: bold;
-    margin: 0 auto;
+    margin: auto;
     display: block;
   }
   .fadeOut{

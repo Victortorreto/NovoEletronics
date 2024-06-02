@@ -65,7 +65,9 @@ function validarInserir() {
     if (!validarQuantidade(qtd) && validarValorUnitario(vlor)) {
         alert("Quantidade ou valor unitário inválidos! Insira novamente os dados.");
         return false;
-    } 
+    } else {
+        alert("Dados salvo com sucesso!!"); 
+    }
 
     /*if (!validarValorUnitario(vlor)) {
         alert("Valor unitário inválido! Insira novamente o valor do produto .");
@@ -75,20 +77,12 @@ function validarInserir() {
     return true;
 }
 
-
-//Função para inserir novas encomendas
-function Inserir(){
-    if (!validarInserir()) {
-        return;
-    }
+function addEncomenda(encomenda) {
     var Tabela = document.querySelector(".tabela");
     var linha = Tabela.insertRow();
 
-    var nome = document.getElementById("nme").value;
-    var produto = document.getElementById("prduto").value;
-    var qntd = parseInt(document.getElementById("qtd").value);
-    var valor = parseFloat(document.getElementById("vlor").value);
-    var total = qntd * valor;
+    // Adicionando a classe .cliente à linha
+    linha.classList.add("cliente", "visivel");
 
     var linha1 = linha.insertCell(0);
     var linha2 = linha.insertCell(1);
@@ -96,18 +90,50 @@ function Inserir(){
     var linha4 = linha.insertCell(3);
     var linha5 = linha.insertCell(4);
 
-    linha1.textContent = nome;
-    linha2.textContent = produto;
-    linha3.textContent = qntd;
-    linha4.textContent = formatarValor(valor);
-    linha5.textContent = formatarValor(total);
+    linha1.textContent = encomenda.nome;
+    linha2.textContent = encomenda.produto;
+    linha3.textContent = encomenda.qntd;
+    linha4.textContent = formatarValor(encomenda.valor);
+    
+   // Calcula o total com base na quantidade e no valor unitário
+   var total = encomenda.qntd * encomenda.valor;
+   linha5.textContent = formatarValor(total); // Mostra o total na tabela
+
+      // Aplica o filtro novamente para mostrar apenas as encomendas visíveis
+      aplicarFiltro();
+    }
+    
+    //Função para aplicar o filtro e mostrar apenas as encomendas visíveis
+    function aplicarFiltro() {
+        campoFiltro.dispatchEvent(new Event('input')); // Dispara o evento de input no campo de filtro
+    }
+
+//Função para inserir novas encomendas
+function Inserir(){
+    if (!validarInserir()) {
+        return;
+    }
+    var nome = document.getElementById("nme").value;
+    var produto = document.getElementById("prduto").value;
+    var qntd = parseInt(document.getElementById("qtd").value);
+    var valor = parseFloat(document.getElementById("vlor").value);
+    var total = qntd * valor;
+
+    // Criando um objeto com os detalhes da encomenda
+    var encomenda = {
+        nome: nome,
+        produto: produto,
+        qntd: qntd,
+        valor: valor,
+        total: total
+    };
+
+    // Adicionando a nova encomenda na tabela
+    addEncomenda(encomenda);
 
     //Limpa os campos do formulário
     document.getElementById("nme").value ="";
     document.getElementById("prduto").value ="";
     document.getElementById("qtd").value ="";
     document.getElementById("vlor").value ="";
-
-} 
-
-
+}
