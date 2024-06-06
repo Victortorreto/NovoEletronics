@@ -10,69 +10,78 @@ for (var count = 0; count < clientes.length; count++) {
     //Captura a valor unitário do produto
     var unitario = clientes[count].querySelector(".valor").textContent;
 
+
     // Função para validar a quantidade
     function validarQuantidade(qntd) {
-    if(qntd<1 || isNaN(qntd)) {
-        return false;
-    } else {
-        return true;
+        if (qntd < 1 || isNaN(qntd)) {
+            return false;
+        } else {
+            return true;
+        }
     }
-}
 
     // Função para validar o valor unitário
     function validarValorUnitario(unitario) {
-    if(unitario<1 || isNaN(unitario)) {
-        return false;
-    } else {
-        return true;
+        if (unitario < 1 || isNaN(unitario)) {
+            return false;
+        } else {
+            return true;
+        }
     }
-}
 
-function formatarValor(valor) {
-    return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-}
+    function formatarValor(valor) {
+        return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    }
 
-    if(validarQuantidade(qntd) && validarValorUnitario(unitario)){
-    //Quantidade OK, prossegue
-    //Calcula o valor total da encomenda
-    var total = qntd * unitario;
-    clientes[count].querySelector(".total").textContent = formatarValor(total);
-    clientes[count].querySelector(".valor").textContent = formatarValor(unitario);
-    clientes[count].querySelector(".valor").textContent = "R$" + unitario;
+    if (validarQuantidade(qntd) && validarValorUnitario(unitario)) {
+        //Quantidade OK, prossegue
+        //Calcula o valor total da encomenda
+        var total = qntd * unitario;
+        clientes[count].querySelector(".total").textContent = formatarValor(total);
+        clientes[count].querySelector(".valor").textContent = formatarValor(unitario);
+        clientes[count].querySelector(".valor").textContent = "R$" + unitario;
     } else {
         //Valida a quantidade
-        if(!validarQuantidade(qntd)){
-        //Quantidade NOK, avisa o usúario
-        clientes[count].querySelector(".qntd").textContent = " QNTD INVÁLIDA!";
-        //clientes[count].style.color="red"; coloca toda a escrita da coluna em vermelho
-        //clientes[count].style.backgroundColor="red"; //coloca todo o fundo da coluna 
-        clientes[count].querySelector(".qntd").classList.add("qntd-invalida"); //coloca apenas o texto da quantidade em vermelho
-        
-    } else {
+        if (!validarQuantidade(qntd)) {
+            //Quantidade NOK, avisa o usúario
+            clientes[count].querySelector(".qntd").textContent = " QNTD INVÁLIDA!";
+            //clientes[count].style.color="red"; coloca toda a escrita da coluna em vermelho
+            //clientes[count].style.backgroundColor="red"; //coloca todo o fundo da coluna 
+            clientes[count].querySelector(".qntd").classList.add("qntd-invalida"); //coloca apenas o texto da quantidade em vermelho
+
+        } else {
             //Valida o valor Unitário
-            if (!validarValorUnitario(unitario)){
-            //Valor Unitário NOK, avisa o usúario
-            clientes[count].querySelector(".valor").textContent = " Unitário inválido";
-            clientes[count].style.backgroundColor="red"; //coloca todo o fundo da coluna 
-            }  
+            if (!validarValorUnitario(unitario)) {
+                //Valor Unitário NOK, avisa o usúario
+                clientes[count].querySelector(".valor").textContent = " Unitário inválido";
+                clientes[count].style.backgroundColor = "red"; //coloca todo o fundo da coluna 
+            }
+        }
     }
-}  
 }
 function validarInserir() {
     var qtd = parseInt(document.getElementById("qtd").value);
-    var vlor = parseFloat(document.getElementById("vlor").value);
+    //var vlor = parseFloat(document.getElementById("vlor").value);
+    var nme = document.getElementById("nme").value;
+    var prduto = document.getElementById("prduto").value;
 
-    if (!validarQuantidade(qtd) && validarValorUnitario(vlor)) {
+    // Verifica se os campos estão vazios
+    if (nme === "" || prduto === "") {
+        alert("Por favor, preencha todos os campos corretamente!");
+        return false;
+    }
+
+    if (!validarQuantidade(qtd)) {
         alert("Quantidade ou valor unitário inválidos! Insira novamente os dados.");
         return false;
     } else {
-        alert("Dados salvo com sucesso!!"); 
+        alert("Dados salvo com sucesso!!");
     }
 
-    /*if (!validarValorUnitario(vlor)) {
-        alert("Valor unitário inválido! Insira novamente o valor do produto .");
-        return false;
-    }*/
+    // if (!validarValorUnitario(vlor)) {
+    //     alert("Valor unitário inválido! Insira novamente o valor do produto .");
+    //     return false;
+    // }
 
     return true;
 }
@@ -82,7 +91,7 @@ function addEncomenda(encomenda) {
     var linha = Tabela.insertRow();
 
     // Adicionando a classe .cliente à linha
-    linha.classList.add("cliente", "visivel");
+    linha.classList.add("cliente");
 
     var linha1 = linha.insertCell(0);
     var linha2 = linha.insertCell(1);
@@ -94,22 +103,15 @@ function addEncomenda(encomenda) {
     linha2.textContent = encomenda.produto;
     linha3.textContent = encomenda.qntd;
     linha4.textContent = formatarValor(encomenda.valor);
-    
-   // Calcula o total com base na quantidade e no valor unitário
-   var total = encomenda.qntd * encomenda.valor;
-   linha5.textContent = formatarValor(total); // Mostra o total na tabela
 
-      // Aplica o filtro novamente para mostrar apenas as encomendas visíveis
-      aplicarFiltro();
-    }
-    
-    //Função para aplicar o filtro e mostrar apenas as encomendas visíveis
-    function aplicarFiltro() {
-        campoFiltro.dispatchEvent(new Event('input')); // Dispara o evento de input no campo de filtro
-    }
+    // Calcula o total com base na quantidade e no valor unitário
+    var total = encomenda.qntd * encomenda.valor;
+    linha5.textContent = formatarValor(total); // Mostra o total na tabela
+
+}
 
 //Função para inserir novas encomendas
-function Inserir(){
+function Inserir() {
     if (!validarInserir()) {
         return;
     }
@@ -132,8 +134,8 @@ function Inserir(){
     addEncomenda(encomenda);
 
     //Limpa os campos do formulário
-    document.getElementById("nme").value ="";
-    document.getElementById("prduto").value ="";
-    document.getElementById("qtd").value ="";
-    document.getElementById("vlor").value ="";
+    document.getElementById("nme").value = "";
+    document.getElementById("prduto").value = "";
+    document.getElementById("qtd").value = "";
+    document.getElementById("vlor").value = "";
 }
