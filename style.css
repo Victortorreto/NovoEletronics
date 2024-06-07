@@ -102,6 +102,19 @@ table {
   .filtro_css{
     padding: 20px;
   }
+  .meme {
+    display: none; /* Inicialmente oculto */
+    /* Adicione estilos adicionais conforme necessário */
+    /* Por exemplo: */
+    width: 300; /* Largura */
+    height: 300; /* Altura */
+    border-radius: 50%; /* Bordas arredondadas para torná-lo um círculo */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
  
   
 

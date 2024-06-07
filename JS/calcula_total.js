@@ -76,6 +76,15 @@ function validarInserir() {
         return false;
     } else {
         alert("Dados salvo com sucesso!!");
+
+        // Exibe o GIF após o alerta
+    document.getElementById("gif").style.display = "block";
+
+    // Define um timeout para ocultar o GIF após 4 segundos
+    setTimeout(function() {
+        document.getElementById("gif").style.display = "none";
+    }, 4000); 
+
     }
 
     // if (!validarValorUnitario(vlor)) {
@@ -89,7 +98,7 @@ function validarInserir() {
 function addEncomenda(encomenda) {
     var Tabela = document.querySelector(".tabela");
     var linha = Tabela.insertRow();
-
+    
     // Adicionando a classe .cliente à linha
     linha.classList.add("cliente");
 
@@ -98,6 +107,12 @@ function addEncomenda(encomenda) {
     var linha3 = linha.insertCell(2);
     var linha4 = linha.insertCell(3);
     var linha5 = linha.insertCell(4);
+
+    linha1.classList.add("nome");
+    linha2.classList.add("produto");
+    linha3.classList.add("qntd");
+    linha4.classList.add("valor");
+    linha5.classList.add("total");
 
     linha1.textContent = encomenda.nome;
     linha2.textContent = encomenda.produto;
