@@ -9,7 +9,7 @@
         },
         {
             "nome": "Robin Wood",
-            "produto": "Controle PS%",
+            "produto": "Controle PS5",
             "qntd": 4,
             "valor": 599,
             "total": 0
@@ -23,16 +23,16 @@
         },
         {
             "nome": "Hermione",
-            "produto": "dsgsad",
+            "produto": "Capa de Invisibilidade",
             "qntd": 2,
             "valor": 4599,
             "total": 0
         },
         {
             "nome": "Coringa",
-            "produto": "fssgsd",
-            "qntd": 10,
-            "valor": 4599,
+            "produto": "Batmóvel",
+            "qntd": 2,
+            "valor": 89599,
             "total": 0
         }
     ]
